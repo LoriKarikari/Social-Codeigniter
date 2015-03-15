@@ -11,8 +11,7 @@ a simple [HybridAuth](http://hybridauth.sourceforge.net/) - [CodeIgniter](http:/
 ##Installation
 1. Drop the provided files into the CodeIgniter project
 2. Configure the providers inside the application/config/hybridauthlib.php file
-3. Modify the controller example supplied (application/controller/hauth.php) to fit your needs
 
 ##How to use
-Check out the example code and configure it to fit your needs.
+Check out the example views and controller and configure it to fit your needs.
 
