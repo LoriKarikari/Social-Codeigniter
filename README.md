@@ -14,9 +14,5 @@ a simple [HybridAuth](http://hybridauth.sourceforge.net/) - [CodeIgniter](http:/
 3. Modify the controller example supplied (application/controller/hauth.php) to fit your needs
 
 ##How to use
-The only thing you need is to put as many links as you need pointing to "http://&lt;yourdomain>/index.php/hauth/login/&lt;provider>", ex.:
-
-	<a href="http://www.example.com/index.php/hauth/login/Twitter">Log in with Twitter</a><br />
-	<a href="http://www.example.com/index.php/hauth/login/Facebook">Log in with Facebook</a><br />
-	<a href="http://www.example.com/index.php/hauth/login/LinkedIn">Log in with LinkedIn</a>
+Check out the example code and configure it to fit your needs.
 
