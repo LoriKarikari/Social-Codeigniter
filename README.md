@@ -1,5 +1,6 @@
 #HybridIgniter
 
+Updated version.
 A simple [HybridAuth](http://hybridauth.sourceforge.net/) - [CodeIgniter](http://ellislab.com/codeigniter) integration.
 
 ##Versions
