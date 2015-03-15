@@ -3,8 +3,8 @@
 A simple [HybridAuth](http://hybridauth.sourceforge.net/) - [CodeIgniter](http://ellislab.com/codeigniter) integration.
 
 ##Versions
-- HybridAuth 2.1.2
-- CodeIgniter 2.1.3
+- HybridAuth 2.4.0
+- CodeIgniter 2.2.1
 
 ##Installation
 1. Drop the provided files into the CodeIgniter project
