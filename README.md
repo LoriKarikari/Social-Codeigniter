@@ -1,7 +1,7 @@
 #HybridIgniter2
 
-Updated version of [HybridIgniter](https://github.com/andacata/HybridIgniter/)
-A simple [HybridAuth](http://hybridauth.sourceforge.net/) - [CodeIgniter](http://ellislab.com/codeigniter) integration.
+Updated version of [HybridIgniter](https://github.com/andacata/HybridIgniter/):
+a simple [HybridAuth](http://hybridauth.sourceforge.net/) - [CodeIgniter](http://ellislab.com/codeigniter) integration.
 
 ##Changes 
 - Updated HybridAuth from version 2.1.2 to 2.4.0
