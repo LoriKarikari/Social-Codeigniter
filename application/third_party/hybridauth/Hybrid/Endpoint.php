@@ -1,8 +1,8 @@
 <?php
-/*!
+/**
 * HybridAuth
 * http://hybridauth.sourceforge.net | http://github.com/hybridauth/hybridauth
-* (c) 2009-2012, HybridAuth authors | http://hybridauth.sourceforge.net/licenses.html
+* (c) 2009-2014, HybridAuth authors | http://hybridauth.sourceforge.net/licenses.html
 */
 
 /**
@@ -27,14 +27,15 @@ class Hybrid_Endpoint {
 		if ( is_null(Hybrid_Endpoint::$request) ){
 			// Fix a strange behavior when some provider call back ha endpoint
 			// with /index.php?hauth.done={provider}?{args}... 
-			// >here we need to recreate the $_REQUEST
+			// >here we need to parse $_SERVER[QUERY_STRING]
+			$request = $_REQUEST;
 			if ( strrpos( $_SERVER["QUERY_STRING"], '?' ) ) {
 				$_SERVER["QUERY_STRING"] = str_replace( "?", "&", $_SERVER["QUERY_STRING"] );
 
-				parse_str( $_SERVER["QUERY_STRING"], $_REQUEST );
+				parse_str( $_SERVER["QUERY_STRING"], $request );
 			}
 
-			Hybrid_Endpoint::$request = $_REQUEST;
+			Hybrid_Endpoint::$request = $request;
 		}
 
 		// If openid_policy requested, we return our policy document
@@ -119,8 +120,7 @@ class Hybrid_Endpoint {
 		if( ! Hybrid_Auth::storage()->get( "hauth_session.$provider_id.hauth_endpoint" ) ) {
 			Hybrid_Logger::error( "Endpoint: hauth_endpoint parameter is not defined on hauth_start, halt login process!" );
 
-			header( "HTTP/1.0 404 Not Found" );
-			die( "You cannot access this page directly." );
+			throw new Hybrid_Exception( "You cannot access this page directly." );
 		}
 
 		# define:hybrid.endpoint.php step 2.
@@ -130,8 +130,7 @@ class Hybrid_Endpoint {
 		if( ! $hauth ) {
 			Hybrid_Logger::error( "Endpoint: Invalid parameter on hauth_start!" );
 
-			header( "HTTP/1.0 404 Not Found" );
-			die( "Invalid parameter! Please return to the login page and try again." );
+			throw new Hybrid_Exception( "Invalid parameter! Please return to the login page and try again." );
 		}
 
 		try {
@@ -141,7 +140,7 @@ class Hybrid_Endpoint {
 		}
 		catch ( Exception $e ) {
 			Hybrid_Logger::error( "Exception:" . $e->getMessage(), $e );
-			Hybrid_Error::setError( $e->getMessage(), $e->getCode(), $e->getTraceAsString(), $e );
+			Hybrid_Error::setError( $e->getMessage(), $e->getCode(), $e->getTraceAsString(), $e->getPrevious() );
 
 			$hauth->returnToCallbackUrl();
 		}
@@ -165,8 +164,7 @@ class Hybrid_Endpoint {
 
 			$hauth->adapter->setUserUnconnected();
 
-			header("HTTP/1.0 404 Not Found"); 
-			die( "Invalid parameter! Please return to the login page and try again." );
+			throw new Hybrid_Exception( "Invalid parameter! Please return to the login page and try again." );
 		}
 
 		try {
@@ -176,7 +174,7 @@ class Hybrid_Endpoint {
 		}
 		catch( Exception $e ){
 			Hybrid_Logger::error( "Exception:" . $e->getMessage(), $e );
-			Hybrid_Error::setError( $e->getMessage(), $e->getCode(), $e->getTraceAsString(), $e );
+			Hybrid_Error::setError( $e->getMessage(), $e->getCode(), $e->getTraceAsString(), $e->getPrevious());
 
 			$hauth->adapter->setUserUnconnected(); 
 		}
@@ -194,23 +192,24 @@ class Hybrid_Endpoint {
 
 			# Init Hybrid_Auth
 			try {
-				require_once realpath( dirname( __FILE__ ) )  . "/Storage.php";
+                if(!class_exists("Hybrid_Storage")){
+                    require_once realpath( dirname( __FILE__ ) )  . "/Storage.php";
+                }
 				
 				$storage = new Hybrid_Storage(); 
 
 				// Check if Hybrid_Auth session already exist
-				if ( ! $storage->config( "CONFIG" ) ) { 
-					header( "HTTP/1.0 404 Not Found" );
-					die( "You cannot access this page directly." );
+				if ( ! $storage->config( "CONFIG" ) ) {
+
+					throw new Hybrid_Exception( "You cannot access this page directly." );
 				}
 
 				Hybrid_Auth::initialize( $storage->config( "CONFIG" ) ); 
 			}
 			catch ( Exception $e ){
-				Hybrid_Logger::error( "Endpoint: Error while trying to init Hybrid_Auth" ); 
+				Hybrid_Logger::error( "Endpoint: Error while trying to init Hybrid_Auth: " . $e->getMessage()); 
 
-				header( "HTTP/1.0 404 Not Found" );
-				die( "Oophs. Error!" );
+				throw new Hybrid_Exception( "Oophs. Error!" );
 			}
 		}
 	}
