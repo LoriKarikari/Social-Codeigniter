@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -221,7 +220,7 @@
 <body>
 
 <div id="container">
-	<h1>Welcome to HybridIgniter</h1>
+	<h1>Welcome to HybridIgniter 2</h1>
 
 	<div id="body">
 		<p>We've brought together CodeIgniter and Hybrid auth for the best solution for user authentication.</p>
