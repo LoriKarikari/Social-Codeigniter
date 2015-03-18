@@ -2,9 +2,24 @@
 
 class HAuth extends CI_Controller {
 
+	public function __construct()
+	{
+		// Constructor to auto-load HybridAuthLib
+		parent::__construct();
+		$this->load->library('HybridAuthLib');
+	}
+
 	public function index()
 	{
-		$this->load->view('hauth/home');
+		// Send to the view all permitted services as a user profile if authenticated
+		$login_data['providers'] = $this->hybridauthlib->getProviders();
+		foreach($login_data['providers'] as $provider=>$d) {
+			if ($d['connected'] == 1) {
+				$login_data['providers'][$provider]['user_profile'] = $this->hybridauthlib->authenticate($provider)->getUserProfile();
+			}
+		}
+
+		$this->load->view('hauth/home', $login_data);
 	}
 
 	public function login($provider)
