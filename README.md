@@ -11,8 +11,8 @@ The main goal is to act as an abstract API between your application and various 
 - Fixed some errors in the example code
 
 ##TODO
-Add users to database
-Allow users to change their profile
+- Add users to database
+- Allow users to change their profile
 
 
 ##Installation
