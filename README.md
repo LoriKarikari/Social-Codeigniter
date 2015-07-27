@@ -10,9 +10,10 @@ The main goal is to act as an abstract API between your application and various 
 - Updated CodeIgniter from version 2.1.3 to 2.2.1
 - Fixed some errors in the example code
 
-##TODO
+##To-Do
 - Add users to database
 - Allow users to change their profile
+- Update for Codeigniter 3
 
 
 ##Installation
