@@ -1,4 +1,4 @@
-#HybridIgniter2
+#Social-Codeigniter
 
 Updated version of [HybridIgniter](https://github.com/andacata/HybridIgniter/):
 a simple [HybridAuth](http://hybridauth.sourceforge.net/) - [CodeIgniter](http://ellislab.com/codeigniter) integration.
