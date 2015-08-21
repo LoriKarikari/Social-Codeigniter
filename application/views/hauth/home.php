@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>Welcome to CodeIgniter</title>
+	<title>Welcome to Social-Codeigniter</title>
 
 	<style type="text/css">
 		::selection {
@@ -220,10 +220,10 @@
 <body>
 
 <div id="container">
-	<h1>Welcome to HybridIgniter 2</h1>
+	<h1>Welcome to Social-Codeigniter</h1>
 
 	<div id="body">
-		<p>We've brought together CodeIgniter and Hybrid auth for the best solution for user authentication.</p>
+		<p>We've brought together CodeIgniter and HybridAuth 2.4.0 for the best solution for user authentication.</p>
 		<p>Select a service to authenticate with. If you have previously authenticated, it will be denoted below.</p>
 		<h4>Select a service:</h4>
 		<ul id="provider-list">
