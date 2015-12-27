@@ -18,7 +18,7 @@ The main goal is to act as an abstract API between your application and various 
 
 
 ##Installation
-1. Select from the Social-CodeIgniter 2.2.1 and 3.0.1 versions as needed
+1. Select the folder Social-CodeIgniter 2.2.1 or 3.0.1 as needed
 2. Drop the provided files into the CodeIgniter project
 3. Configure the providers inside the application/config/hybridauthlib.php file
 4. Check Hauth.php controller's index() function for configuring your view
