@@ -1,5 +1,7 @@
 #Social-Codeigniter
 
+##!! This package is no longer maintained
+
 Updated version of [HybridIgniter](https://github.com/andacata/HybridIgniter/):
 a simple [HybridAuth](http://hybridauth.sourceforge.net/) - [CodeIgniter](http://ellislab.com/codeigniter) integration. This repository includes Social-Codeigniter for CodeIgniter 2.2.1 and 3.0.1 for usage.
 
@@ -18,7 +20,7 @@ The main goal is to act as an abstract API between your application and various 
 
 
 ##Installation
-1. Select the folder Social-CodeIgniter 2.2.1 or 3.0.1 as needed
+1. Select the Social-CodeIgniter 2.2.1 or 3.0.1 folder
 2. Drop the provided files into the CodeIgniter project
 3. Configure the providers inside the application/config/hybridauthlib.php file
 4. Check Hauth.php controller's index() function for configuring your view
